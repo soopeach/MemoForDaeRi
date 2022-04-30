@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "254096001243",
+    "project_id": "memofordaeri-27a03",
+    "storage_bucket": "memofordaeri-27a03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254096001243:android:8626bb0a626372d704e4fe",
+        "android_client_info": {
+          "package_name": "com.soopeach.memofordaeri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254096001243-us3j7rvrrfrj8od1ic3uaeplj0fnjica.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJh1VMgYIpCwspMOCIMBX9Rzwxlyz2yOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254096001243-us3j7rvrrfrj8od1ic3uaeplj0fnjica.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
