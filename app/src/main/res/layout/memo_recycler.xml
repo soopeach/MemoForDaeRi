@@ -11,10 +11,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="18dp"
         android:ellipsize="end"
         android:textStyle="bold"
+        android:textSize="20dp"
         android:maxLines="1"
         android:text="제목"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +32,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="40dp"
         android:ellipsize="end"
-        android:maxLines="4"
+        android:maxLines="1"
         android:text="내용\n최대\n세줄"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,14 +54,5 @@
         app:layout_constraintTop_toBottomOf="@+id/memoContent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageButton
-        android:id="@+id/btnDelete"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/ic_baseline_delete_24"
-        app:layout_constraintBottom_toTopOf="@id/memoTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

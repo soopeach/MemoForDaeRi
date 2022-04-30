@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.soopeach.memofordaeri.Memo
 import com.soopeach.memofordaeri.MemoRecyclerAdapter
+import com.soopeach.memofordaeri.R
 import com.soopeach.memofordaeri.databinding.FragmentHomeBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,23 +40,42 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
 
-//        val homeViewModel =
-//            ViewModelProvider(this).get(HomeViewModel::class.java)
+        adapter.setItemClickListener(object : MemoRecyclerAdapter.OnItemClickListener{
+            override fun onClick(view: View, position: Int) {
+
+                val bundle = bundleOf(
+                    "title" to "${memoList[position].title}",
+                    "content" to "${memoList[position].content}",
+                    "date" to "${memoList[position].date}",
+                    "secret" to "${memoList[position].secret}".toBoolean()
+                )
+                findNavController().navigate(R.id.action_navigation_home_to_navigation_detail, bundle)
+            }
+        })
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnWrite.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_writeFragment)
+        }
     }
 
     fun loadMemo(){
 
         CoroutineScope(Dispatchers.IO).launch{
-            storeDb.collection("Memo")
+            storeDb.collection("memo")
                 .addSnapshotListener{ documents, e ->
                     adapter.memoList.clear()
-                    if (documents!!.isEmpty) memoList.add(Memo("제목", "내용", "날짜"))
+                    if (documents!!.isEmpty) memoList.add(Memo("제목", "내용", "날짜", false))
                     documents?.forEach{document ->
                         val title = document.get("title").toString()
                         val content = document.get("content").toString()
                         val date = document.get("date").toString()
-                        memoList.add(Memo(title, content, date))
+                        val secret = document.get("secret")
+                        memoList.add(Memo(title, content, date, secret as Boolean))
                     }
                     // 시간순으로 정렬
                     memoList.sortByDescending { it.date }

@@ -11,23 +11,27 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_navigation_dashboard"
-            app:destination="@id/navigation_dashboard" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.soopeach.memofordaeri.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+            android:id="@+id/action_navigation_home_to_navigation_detail"
+            app:destination="@id/navigation_detail" />
         <action
-            android:id="@+id/action_navigation_dashboard_to_navigation_notifications"
-            app:destination="@id/navigation_notifications" />
+            android:id="@+id/action_navigation_home_to_writeFragment"
+            app:destination="@id/navigation_write" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.soopeach.memofordaeri.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_detail"
+        android:name="com.soopeach.memofordaeri.ui.dashboard.DetailFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_detail" />
+
+    <fragment
+        android:id="@+id/navigation_write"
+        android:name="com.soopeach.memofordaeri.ui.Write.WriteFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_write" >
+        <action
+            android:id="@+id/action_navigation_write_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
 </navigation>
