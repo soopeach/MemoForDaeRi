@@ -22,7 +22,11 @@
         android:id="@+id/navigation_detail"
         android:name="com.soopeach.memofordaeri.ui.dashboard.DetailFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_navigation_detail_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_write"

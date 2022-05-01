@@ -1,14 +1,9 @@
 package com.soopeach.memofordaeri
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+
 import com.soopeach.memofordaeri.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,4 +17,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
     }
+
 }

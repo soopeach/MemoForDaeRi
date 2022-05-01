@@ -1,13 +1,17 @@
 package com.soopeach.memofordaeri.ui.Write
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -40,6 +44,12 @@ class WriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.checkSecret.setOnClickListener {
+            if (binding.checkSecret.isChecked) binding.password.isVisible = true
+            else if (!(binding.checkSecret.isChecked)) binding.password.isVisible = false
+        }
+
         // 글자수 입력을 나타내줌
         with(binding){
             writeContent.addTextChangedListener(object : TextWatcher {
@@ -91,10 +101,12 @@ class WriteFragment : Fragment() {
             val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis()).toString()
             // 비밀로 작성하기라면
             val secret = if (checkSecret.isChecked) true else false
+            val password = password.text.toString().trim()
+
 
             // 제목과 내용이 모두 입력되어있어야함.
             if(title.isNotEmpty() && content.isNotEmpty()){
-                val memo = Memo(title, content, date, secret)
+                val memo = Memo(title, content, date, secret, password)
                 storeDb.collection("memo").add(memo)
 
                 // 게시글 제목, 내용 초기화
@@ -102,7 +114,7 @@ class WriteFragment : Fragment() {
                 writeContent.setText("")
                 Toast.makeText(context,
                     "게시글이 작성되었습니다.",Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_navigation_write_to_navigation_home)
+                findNavController().popBackStack()
             } else {
                 Toast.makeText(context, "제목과 내용을 모두 입력하여주세요.", Toast.LENGTH_SHORT).show()
             }

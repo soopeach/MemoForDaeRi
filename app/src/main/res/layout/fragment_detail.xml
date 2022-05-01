@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="70dp"
         android:layout_marginTop="16dp"
         android:hint="제목을 입력하여주세요."
         android:maxLines="1"
@@ -64,9 +64,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="220dp"
-        android:text="비밀작성"
+        android:text="비밀메모"
         app:layout_constraintBottom_toTopOf="@id/btnWrite"
         app:layout_constraintEnd_toStartOf="@id/countText"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:visibility="gone"
+        android:hint="비밀번호 입력"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="80dp"
+        app:layout_constraintTop_toBottomOf="@id/checkSecret"
+        app:layout_constraintEnd_toStartOf="@id/btnWrite"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageButton
+        android:id="@+id/deleteBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/writeTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/writeContent"
+        android:src="@drawable/ic_baseline_delete_24"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,5 +8,7 @@ data class Memo (
     // 메모가 작성된 날짜
     val date : String,
     // 비밀메모 여뷰
-    val secret : Boolean
+    val secret : Boolean,
+    // 비밀번호
+    val password : String
 )
